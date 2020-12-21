@@ -55,10 +55,23 @@ class ProcessRockHitCounter extends Process {
     /** @var InputfieldForm $form */
     $form = $this->modules->get('InputfieldForm');
 
+    $query = $this->wire->database->prepare("SELECT
+      DATE_FORMAT(ts, '%Y-%m-%d'), count(page_id)
+      FROM `rockhitcounter`
+      group by DATE_FORMAT(ts, '%Y-%m-%d')");
+    $query->execute();
+    $out = "<table class='uk-table uk-table-striped uk-table-small'>";
+    foreach($query->fetchAll() as $row) {
+      $date = $row[0];
+      $count = $row[1];
+      $out .= "<tr><td class='uk-text-nowrap'>$date</td><td class='uk-width-expand'>$count</td></tr>";
+    }
+    $out .= "</table>";
+
     $form->add([
       'type' => 'markup',
-      'label' => 'foo',
-      'value' => 'bar',
+      'label' => 'Tägliche Zugriffe',
+      'value' => $out,
     ]);
 
     return $form->render();
