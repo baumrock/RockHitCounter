@@ -56,22 +56,32 @@ class ProcessRockHitCounter extends Process {
     $form = $this->modules->get('InputfieldForm');
 
     $query = $this->wire->database->prepare("SELECT
-      DATE_FORMAT(ts, '%Y-%m-%d'), count(page_id)
+        DATE_FORMAT(ts, '%Y-%m-%d') AS 'date'
+        ,count(page_id) AS 'count'
+        ,CONCAT('/', `pages_paths`.`path`) AS `path`
+        ,pages_id AS id
       FROM `rockhitcounter`
-      group by DATE_FORMAT(ts, '%Y-%m-%d')");
+      LEFT JOIN `pages_paths` ON `pages_paths`.`pages_id` = page_id
+      group by
+        DATE_FORMAT(ts, '%Y-%m-%d')
+        ,page_id
+      ");
     $query->execute();
-    $out = "<table class='uk-table uk-table-striped uk-table-small'>";
-    foreach($query->fetchAll() as $row) {
-      $date = $row[0];
-      $count = $row[1];
-      $out .= "<tr><td class='uk-text-nowrap'>$date</td><td class='uk-width-expand'>$count</td></tr>";
-    }
-    $out .= "</table>";
+    $hits = $query->fetchAll(\PDO::FETCH_OBJ);
+    $this->wire->config->js('RockHits', $hits);
+    $this->wire->config->styles->add('https://unpkg.com/tabulator-tables@4.9.3/dist/css/tabulator.min.css');
+    $this->wire->config->scripts->add('https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js');
+    $this->wire->config->scripts->add('https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly.min.js');
 
     $form->add([
       'type' => 'markup',
-      'label' => 'Tägliche Zugriffe',
-      'value' => $out,
+      'label' => 'Chart',
+      'value' => $this->wire->files->render(__DIR__."/fields/chart.php"),
+    ]);
+    $form->add([
+      'type' => 'markup',
+      'label' => 'Page hits',
+      'value' => $this->wire->files->render(__DIR__."/fields/table.php"),
     ]);
 
     return $form->render();
