@@ -71,7 +71,7 @@ class ProcessRockHitCounter extends Process {
     $this->wire->config->js('RockHits', $hits);
     $this->wire->config->styles->add('https://unpkg.com/tabulator-tables@4.9.3/dist/css/tabulator.min.css');
     $this->wire->config->scripts->add('https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js');
-    $this->wire->config->scripts->add('https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly.min.js');
+    $this->wire->config->scripts->add('https://cdn.plot.ly/plotly-latest.min.js');
 
     $form->add([
       'type' => 'markup',

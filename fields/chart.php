@@ -9,5 +9,6 @@ let layout = {
     autorange: true
   },
 };
-Plotly.newPlot(chart, data, layout);
+var config = {responsive: true};
+Plotly.newPlot(chart, data, layout, config);
 </script>
