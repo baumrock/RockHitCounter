@@ -46,4 +46,8 @@ var table = new Tabulator("#rockhits", {
     Plotly.restyle(chart, 'y', [y]);
   },
 });
+$(document).on('opened', '#rockhitcounter_details', function(e) {
+  console.log('fired');
+  table.redraw(true);
+});
 </script>

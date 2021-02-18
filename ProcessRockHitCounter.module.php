@@ -25,20 +25,6 @@ class ProcessRockHitCounter extends Process {
         'parent' => 'setup',
         'title' => 'Page Hit Statistics'
       ],
-
-      // optional extra navigation that appears in admin
-      // if you change this, you'll need to a Modules > Refresh to see changes
-      // 'nav' => [
-      //   [
-      //     'url' => '',
-      //     'label' => 'Hello',
-      //     'icon' => 'smile-o',
-      //   ],[
-      //     'url' => 'something/',
-      //     'label' => 'Something',
-      //     'icon' => 'beer',
-      //   ],
-      // ]
     ];
   }
 
@@ -80,8 +66,10 @@ class ProcessRockHitCounter extends Process {
     ]);
     $form->add([
       'type' => 'markup',
-      'label' => 'Page hits',
+      'id' => 'rockhitcounter_details',
+      'label' => 'Details',
       'value' => $this->wire->files->render(__DIR__."/fields/table.php"),
+      'collapsed' => Inputfield::collapsedYes,
     ]);
 
     return $form->render();
