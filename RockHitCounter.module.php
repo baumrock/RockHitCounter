@@ -83,6 +83,7 @@ class RockHitCounter extends WireData implements Module, ConfigurableModule {
    * Uninstall this module
    */
   public function ___uninstall() {
-    $this->dropTable();
+    // todo: better ask before dropping data!
+    // $this->dropTable();
   }
 }
