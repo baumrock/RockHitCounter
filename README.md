@@ -18,7 +18,7 @@ At the moment there are no options for limiting the size of the DB table or for 
 
 ### Statistic
 
-**Also note that this module can only show statistics from the time of installation of RockHitCounter forward, because PageHitCounter only saves total counts and RockHitCounter creates a new table in the DB that stores the page id and a timestamp of the visit. Even though there is no configuration yet you might want to install the module already in order to use the full functionality with historic data.**
+**Also note that this module can only show statistics from the time of installation of RockHitCounter forward, because PageHitCounter only saves total counts and RockHitCounter creates a new table in the DB that stores the page id and a timestamp of the visit. Even though there is no configuration yet you might want to install the module already in order to use the full functionality with historical data.**
 
 ## Screenshot
 
