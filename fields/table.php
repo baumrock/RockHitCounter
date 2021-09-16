@@ -13,6 +13,7 @@ var table = new Tabulator("#rockhits", {
       else if(column.field == 'count') {
         column.width = 90;
         column.hozAlign = 'right';
+        column.bottomCalc = "sum";
       }
       else if(column.field == 'id') {
         column.visible = false;
