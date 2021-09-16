@@ -1,3 +1,4 @@
+<button id="csv-download" class="ui-button uk-margin-small-bottom">CSV</button>
 <div id="rockhits"></div>
 <script>
 var table = new Tabulator("#rockhits", {
@@ -49,5 +50,8 @@ var table = new Tabulator("#rockhits", {
 $(document).on('opened', '#rockhitcounter_details', function(e) {
   console.log('fired');
   table.redraw(true);
+});
+$(document).on('click', '#csv-download', function() {
+  table.download("csv", "data.csv", {delimiter:';'});
 });
 </script>
