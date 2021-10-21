@@ -69,7 +69,7 @@ class ProcessRockHitCounter extends Process {
       'id' => 'rockhitcounter_details',
       'label' => 'Details',
       'value' => $this->wire->files->render(__DIR__."/fields/table.php"),
-      'collapsed' => Inputfield::collapsedYes,
+      'collapsed' => Inputfield::collapsedNo,
     ]);
 
     return $form->render();
