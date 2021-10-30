@@ -8,7 +8,7 @@ At the moment there are no options for limiting the size of the DB table or for 
 
 ### Known issues / possible issues
 
-* The module might not work on multilang setups at the moment because it relates on the core pagePaths module! See https://github.com/baumrock/RockHitCounter/issues/1
+* The module might not work on multilang setups at the moment because it relies on the core pagePaths module! See https://github.com/baumrock/RockHitCounter/issues/1
 
 ## Important notes
 
