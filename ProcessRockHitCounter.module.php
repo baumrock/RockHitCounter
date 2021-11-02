@@ -7,6 +7,9 @@
  * @link https://www.baumrock.com
  */
 class ProcessRockHitCounter extends Process {
+
+  const permission = 'rockhitcounter';
+
   public static function getModuleInfo() {
     return [
       'title' => 'Statistics for RockHitCounter',
@@ -16,8 +19,8 @@ class ProcessRockHitCounter extends Process {
       'requires' => ['RockHitCounter'],
       'installs' => [],
 
-      'permission' => 'rockhitcounter',
-      'permissions' => ['rockhitcounter' => 'May see page hit statistics'],
+      'permission' => self::permission,
+      'permissions' => [self::permission => 'May see page hit statistics'],
 
       // page that you want created to execute this module
       'page' => [
