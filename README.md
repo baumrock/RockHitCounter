@@ -1,12 +1,8 @@
+# ATTENTION
+
+This module will not receive any future updates. I'm using matomo analytics for my projects now!
+
 # RockHitCounter
-
-## A message to Russian 🇷🇺 people
-
-If you currently live in Russia, please read [this message](https://github.com/Roave/SecurityAdvisories/blob/latest/ToRussianPeople.md).
-
-[![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
-
----
 
 RockHitcounter extends PageHitCounter to show historical page hit statistics.
 
